@@ -24,7 +24,7 @@ function Cube() {
 function App() {
     return (
         <Canvas>
-            {/* <ambientLight /> */}
+            <ambientLight />
             <pointLight position={[10,10,10]} intensity={1000} />
             {/* <PerspectiveCamera makeDefault position={[1, 0, 3]} /> */}
             <Cube />
