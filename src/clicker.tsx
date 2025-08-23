@@ -1,6 +1,6 @@
 import { useState, useEffect, } from 'react';
 
-export default function Clicker() {
+export default function Clicker({onOff}: {onOff: boolean}) {
     const [count, setCount] = useState(
             +(localStorage.getItem("count") ?? '0')
     );
@@ -14,6 +14,10 @@ export default function Clicker() {
 
     function buttonClick() {
         setCount(count + 1);
+    }
+
+    if (!onOff) {
+        return null;
     }
 
     return (
