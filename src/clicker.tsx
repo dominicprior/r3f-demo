@@ -1,6 +1,6 @@
 import { useState, useEffect, } from 'react';
 
-export default function App() {
+export default function Clicker() {
     const [count, setCount] = useState(
             +(localStorage.getItem("count") ?? '0')
     );
