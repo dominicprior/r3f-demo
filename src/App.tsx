@@ -1,10 +1,9 @@
 import { useState, useEffect, } from 'react';
 
 export default function App() {
-  const [count, setCount] = useState(() => {
-    const saved = localStorage.getItem("count");
-    return saved !== null ? JSON.parse(saved) : 0; // fallback default
-  });
+    const [count, setCount] = useState(
+            +(localStorage.getItem("count") ?? '0')
+    );
     console.log('hi from App');
 
     useEffect(() => {
