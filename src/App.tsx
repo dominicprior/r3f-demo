@@ -1,24 +1,15 @@
 import { useState, useEffect, } from 'react';
 
-let n = 0;
-
 export default function App() {
-    const [count, setCount] = useState(0);
-
+  const [count, setCount] = useState(() => {
+    const saved = localStorage.getItem("count");
+    return saved !== null ? JSON.parse(saved) : 0; // fallback default
+  });
     console.log('hi from App');
 
     useEffect(() => {
-        const savedCount = +(localStorage.getItem('count') ?? 7);
-        n++;
-        console.log('getting ' + savedCount + ' : ' + n);
-        setCount(savedCount);
-    },
-    [ ]);
-
-    useEffect(() => {
         localStorage.setItem('count', '' + count)
-        n++;
-        console.log('setting to ' + count + ' : ' + n);
+        console.log('setting to ' + count);
     },
     [ count ]);
 
