@@ -11,7 +11,7 @@ export default function App() {
     return (
         <>
             <button onClick={ onOffClick }>on/off</button>
-            <Clicker onOff={clickerActive}/>
+            { clickerActive && <Clicker onOff={clickerActive}/> }
         </>
     )
 }

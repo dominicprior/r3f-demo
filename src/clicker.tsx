@@ -4,7 +4,16 @@ export default function Clicker({onOff}: {onOff: boolean}) {
     const [count, setCount] = useState(
             +(localStorage.getItem("count") ?? '0')
     );
-    console.log('hi from App');
+    console.log('hi from clicker');
+
+    useEffect(() => {
+        console.log('yes');
+        return () => {
+            console.log('no');
+            localStorage.removeItem('count');
+        }
+    },
+    [ ]);
 
     useEffect(() => {
         localStorage.setItem('count', '' + count)
