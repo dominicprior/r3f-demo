@@ -16,14 +16,10 @@ export default function Clicker({onOff}: {onOff: boolean}) {
         setCount(count + 1);
     }
 
-    if (!onOff) {
-        return null;
-    }
-
     return (
         <div>
             <div>count: { count }</div>
-            <button onClick={ buttonClick }>click me</button>
+            { onOff && <button onClick={ buttonClick }>click me</button> }
         </div>
     );
 }
