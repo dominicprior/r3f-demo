@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react"
 
 export default function People() {
+    const URL = 'https://jsonplaceholder.typicode.com/users';
     const [people, setPeople] = useState([
         { id: 1, name: 'John' },
         { id: 2, name: 'Jane' },
     ]);
 
-    useEffect(getPeople3, []);
+    useEffect(() => {
+        async function getPeople5() {
+            const request = await fetch(URL);
+            const result = await request.json();
+            setPeople(result);
+        }
+        getPeople4();
+    }, []);
 
     function getPeople() {
-        const request = fetch('https://jsonplaceholder.typicode.com/users');
+        const request = fetch(URL);
         request.then(response => {
             const parse = response.json();
             parse.then(result => {
@@ -19,7 +27,7 @@ export default function People() {
     }
 
     function getPeople2() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch(URL)
             .then(response => 
                 response.json()
                     .then(result => 
@@ -29,13 +37,13 @@ export default function People() {
     }
 
     function getPeople3() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch(URL)
             .then(response => response.json())
             .then(result => setPeople(result))
     }
 
-    async function getPeople4() {
-        const request = await fetch('https://jsonplaceholder.typicode.com/users');
+    async function getPeople4() {  // didn't work - couldn't call this function.
+        const request = await fetch(URL);
         const result = await request.json();
         setPeople(result);
     }
