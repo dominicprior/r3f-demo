@@ -28,7 +28,11 @@ export default function Clicker({onOff}: {onOff: boolean}) {
     return (
         <div>
             <div>count: { count }</div>
-            { onOff && <button onClick={ buttonClick }>click me</button> }
+            { onOff &&
+                <>
+                    <button onClick={ buttonClick }>click me</button>
+                    <button onClick={ buttonClick }>click me</button>
+                </> }
         </div>
     );
 }
