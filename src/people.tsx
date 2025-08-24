@@ -7,14 +7,7 @@ export default function People() {
         { id: 2, name: 'Jane' },
     ]);
 
-    useEffect(() => {
-        async function getPeople5() {
-            const request = await fetch(URL);
-            const result = await request.json();
-            setPeople(result);
-        }
-        getPeople4();
-    }, []);
+    useEffect(getPeople4, []);
 
     function getPeople() {
         const request = fetch(URL);
@@ -42,7 +35,10 @@ export default function People() {
             .then(result => setPeople(result))
     }
 
-    async function getPeople4() {  // didn't work - couldn't call this function.
+    function getPeople4() {
+        asyncGetPeople4();
+    }
+    async function asyncGetPeople4() {
         const request = await fetch(URL);
         const result = await request.json();
         setPeople(result);
