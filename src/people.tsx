@@ -34,10 +34,6 @@ export default function People() {
             .then(result => setPeople(result))
     }
 
-    async function callGetPeople4() {  // can't seem to call this function
-        await getPeople4();
-    }
-
     async function getPeople4() {
         const request = await fetch('https://jsonplaceholder.typicode.com/users');
         const result = await request.json();
