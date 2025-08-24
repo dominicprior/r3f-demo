@@ -1,15 +1,16 @@
-import { useState, useEffect, } from 'react';
+import { useState, useEffect, useRef, } from 'react';
 
 export default function Clicker({onOff}: {onOff: boolean}) {
     const [count, setCount] = useState(
             +(localStorage.getItem("count") ?? '0')
     );
-    console.log('hi from clicker');
+
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
-        console.log('yes');
+        buttonRef!.current!.style.color = 'green';
+
         return () => {
-            console.log('no');
             localStorage.removeItem('count');
         }
     },
@@ -31,10 +32,11 @@ export default function Clicker({onOff}: {onOff: boolean}) {
             { onOff &&
                 <>
                     {
-                        Array.from({length: 3}, (_, i) =>
+                        Array.from({length: 1}, (_, i) =>
                                 <button
                                     onClick={ buttonClick }
                                     key={ i }
+                                    ref={ buttonRef }
                                 >
                                     {'click me ' + i}
                                 </button>
