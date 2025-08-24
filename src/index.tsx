@@ -4,7 +4,10 @@ import './index.css'
 import App from './app.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <StrictMode>
+        <App>
+            <h1>howdy</h1>
+            <h2>hey</h2>
+        </App>
+    </StrictMode>,
+);

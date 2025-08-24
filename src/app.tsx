@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
 import { useState, } from 'react';
 import Clicker from './clicker.tsx'
 
-export default function App() {
+export default function App({ children }: {children: ReactNode}) {
     const [clickerActive, setClickerActive] = useState(true);
 
     function onOffClick() {
@@ -10,8 +11,12 @@ export default function App() {
 
     return (
         <>
-            <button onClick={ onOffClick }>on/off</button>
+            { children }
+            <button onClick={ onOffClick } style={{color: 'red'}}>
+                on/off
+            </button>
             { clickerActive && <Clicker onOff={clickerActive}/> }
+            { children }
         </>
     )
 }

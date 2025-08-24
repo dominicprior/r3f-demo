@@ -30,9 +30,18 @@ export default function Clicker({onOff}: {onOff: boolean}) {
             <div>count: { count }</div>
             { onOff &&
                 <>
-                    <button onClick={ buttonClick }>click me</button>
-                    <button onClick={ buttonClick }>click me</button>
-                </> }
+                    {
+                        Array.from({length: 3}, (_, i) =>
+                                <button
+                                    onClick={ buttonClick }
+                                    key={ i }
+                                >
+                                    {'click me ' + i}
+                                </button>
+                        )
+                    }
+                </>
+            }
         </div>
     );
 }
